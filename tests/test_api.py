@@ -1,7 +1,8 @@
-import pytest
-import httpx
 import uuid
 from concurrent.futures import ThreadPoolExecutor
+
+import httpx
+import pytest
 
 BASE_URL = "http://localhost:8000"
 

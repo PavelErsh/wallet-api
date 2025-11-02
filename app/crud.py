@@ -1,8 +1,10 @@
-from sqlalchemy.orm import Session
-from sqlalchemy import select
 import uuid
-from app import models, schemas
 from decimal import Decimal
+
+from sqlalchemy import select
+from sqlalchemy.orm import Session
+
+from app import models, schemas
 
 
 def get_wallet(db: Session, wallet_id: str):

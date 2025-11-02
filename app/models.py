@@ -1,4 +1,5 @@
-from sqlalchemy import Column, String, Numeric, DateTime, func, CheckConstraint
+from sqlalchemy import CheckConstraint, Column, DateTime, Numeric, String, func
+
 from app.database import Base
 
 
