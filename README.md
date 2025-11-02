@@ -1,48 +1,104 @@
-# Wallet API
+#  Wallet API
 
-A FastAPI-based wallet management system with PostgreSQL.
+![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-cc0000?style=for-the-badge&logo=sqlalchemy&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
+![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?style=for-the-badge&logo=pre-commit&logoColor=white)
 
-## Features
+Современный REST API для управления электронными кошельками и финансовыми операциями.  
+Приложение предоставляет полный набор функций: создание кошельков, пополнение, списание, проверка баланса и просмотр истории транзакций.
 
-- Create and manage digital wallets
-- Deposit and withdraw funds
-- Concurrent operation handling
-- RESTful API
-- Docker containerization
-- Comprehensive testing
+---
 
-## CI/CD Status
+## 🚀 Возможности
 
-![CI/CD](https://github.com/your-username/wallet-api/workflows/CI/CD%20for%20Wallet%20API/badge.svg)
-![Code Coverage](https://img.shields.io/codecov/c/github/your-username/wallet-api)
+- **Создание кошельков** — уникальные идентификаторы и простое создание  
+- **Управление балансом** — пополнение и списание средств  
+- **Проверка баланса** — получение актуального состояния кошелька  
+- **История транзакций** — просмотр всех операций по кошельку  
+- **Валидация операций** — проверка корректности всех действий  
+- **Docker-контейнеризация** — готовая к развертыванию версия  
+- **CI/CD** — автоматическая проверка кода и запуск тестов при каждом изменении  
+- **Pre-commit хуки** — статический анализ кода перед коммитом  
 
-## API Documentation
+---
 
-Once running, visit `/docs` for interactive API documentation.
+## 🛠 Технологический стек
 
-## Development
+- **FastAPI** — быстрый и современный фреймворк для создания API  
+- **SQLAlchemy** — ORM для работы с базой данных  
+- **PostgreSQL** — надёжная система хранения данных  
+- **Alembic** — управление миграциями  
+- **Docker & Docker Compose** — контейнеризация и деплой  
+- **Pytest** — модульное и интеграционное тестирование  
+- **Pre-commit** — автоматическая проверка кода (black, isort, flake8)  
+- **CI/CD (GitHub Actions)** — автоматические тесты и линтинг при push и PR  
 
-### Local Setup
+---
 
-1. Clone the repository
-2. Run with Docker Compose:
-\\`\\`\\`bash
-docker-compose up --build
-\\`\\`\\`
+## 📦 Установка и запуск
 
-3. Run tests:
-\\`\\`\\`bash
-docker-compose exec web pytest tests/ -v
-\\`\\`\\`
+### Предварительные требования
 
-### Code Quality
+- Docker и Docker Compose  
+- Python 3.12+ (для локальной разработки)
 
-- **Black**: Code formatting
-- **isort**: Import sorting
-- **flake8**: Linting
-- **mypy**: Static type checking
-- **pytest**: Testing with coverage
+---
 
-## License
+### ⚙️ Быстрый запуск с Docker
 
-MIT
+```bash
+git clone https://github.com/PavelErsh/wallet-api.git
+cd wallet-api
+docker-compose up --build  
+```
+
+## 📚 Документация API
+### После запуска приложения:
+- Swagger UI — http://localhost:8000/docs
+- ReDoc — http://localhost:8000/redoc
+
+## 🗄 Структура проекта
+```
+wallet-api/
+├── app/
+│   ├── main.py              # Точка входа FastAPI
+│   ├── models.py            # SQLAlchemy модели
+│   ├── schemas.py           # Pydantic схемы
+│   ├── crud.py              # Логика работы с БД
+│   ├── database.py          # Настройки подключения
+│   └── migrations/          # Alembic миграции
+├── tests/
+│   ├── test_api.py          # Тесты API
+├── .pre-commit-config.yaml  # Конфигурация pre-commit хуков
+├── .github/workflows/ci.yml # CI/CD pipeline (тесты, линтинг)
+├── docker-compose.yml       # Конфигурация Docker Compose
+├── Dockerfile               # Docker образ приложения
+├── requirements.txt         # Зависимости Python
+└── alembic.ini              # Конфигурация Alembic
+
+```
+
+## 🧪 Тестирование
+### Запуск тестов:
+```
+docker-compose exec web pytest tests/ -v --cov=app --cov-report=html
+
+```
+
+
+## CI/CD и Pre-commit
+
+- CI/CD (GitHub Actions) — автоматически запускает тесты и линтинг при каждом push и pull request.
+- Pre-commit хуки — проверяют код перед коммитом: форматирование (black), сортировка импортов (isort), линтинг (flake8).
+
+### Пример установки pre-commit:
+
+```
+pip install pre-commit
+pre-commit install
+
+```
+
+
