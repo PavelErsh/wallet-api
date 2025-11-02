@@ -2,7 +2,7 @@ from datetime import datetime
 from decimal import Decimal
 from typing import Literal, Optional
 
-from pydantic import BaseModel, ConfigDict, condecimal
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class WalletBase(BaseModel):
@@ -23,7 +23,7 @@ class WalletResponse(WalletBase):
 
 class OperationBase(BaseModel):
     operation_type: Literal["DEPOSIT", "WITHDRAW"]
-    amount: condecimal(gt=0)
+    amount: Decimal = Field(gt=0, max_digits=10, decimal_places=2)
 
 
 class OperationResponse(OperationBase):
