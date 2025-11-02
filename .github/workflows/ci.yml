@@ -10,7 +10,7 @@ jobs:
   lint-and-test:
     name: Lint and Test
     runs-on: ubuntu-latest
-    
+
     services:
       postgres:
         image: postgres:15
@@ -66,11 +66,11 @@ jobs:
         # Запускаем сервер в фоновом режиме
         nohup python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 > server.log 2>&1 &
         echo $! > server.pid
-        
+
         # Ждем запуска сервера и проверяем его доступность
         echo "Waiting for server to start..."
         sleep 10
-        
+
         # Проверяем, что сервер запустился
         echo "Checking server health..."
         curl -f http://localhost:8000/health || (echo "Server failed to start. Logs:" && cat server.log && exit 1)
